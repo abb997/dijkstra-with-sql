@@ -29,23 +29,6 @@ Note that in PL/pgsql for the functions returning record sets
 it just adds records to the result set
 */
 -------------------------
-
-/*
--- types
-create domain vert_t as text;
-create domain dist_t as bigint;
-
--- graph
-create table relations (
-   _from text not null
-  ,_to text not null
-  ,primary key (_from,_to)
-  );
-
-*/
-
-create unique index if not exists relations_i on relations (_to,_from); -- either on "relations" or "r1"
-
 create or replace function path_bld(_v0 vert_t, _v1 vert_t, _v2 vert_t,_d dist_t,_t0 timestamp)
     returns table(_from vert_t,_to vert_t,d dist_t,t double precision) as $$
   declare
@@ -100,9 +83,6 @@ create or replace function spath2(
     _u1 vert_t;
     _u2 vert_t;
   begin
-    -- create unique index if not exists rel_i on relations (_to,_from); -- this is important
-    create or replace view r as (select * from relations); -- helps to switch between "r1" and "relations"
-
     -- check if edges (_v0,*) and (*,_v2) in the graph
     select count(*) into _xx from
       (           (select 1 from r where r._from = _v0 limit 1)
@@ -194,6 +174,22 @@ create or replace function spath2(
   end;
 $$ language plpgsql;
 
-
+/*
 -- example: 
---select * from spath2('P99999','P95370',0) order by d;
+select * from spath2('P99999','P95370',0) order by d;
+-- returns path of 4 vertices
+-- vertices could be different
+"P99999";"P102184";1;0.000611066818237305;0
+"P102184";"P12159";2;157.845263004303;0
+"P12159";"P112194";3;157.845263004303;0
+"P112194";"P95370";4;0.0760970115661621;0
+
+select * from spath2('P99999','P953710',0) order by d;
+-- returns path of 5 vertices
+"P99999";"P144343";1;0.000507831573486328;0
+"P144343";"P5867";2;73.4139668941498;0
+"P5867";"P105358";3;73.4331448078156;0
+"P105358";"P199637";4;73.4197189807892;0
+"P199637";"P953710";5;0.0375638008117676;0
+*/
+
