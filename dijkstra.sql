@@ -31,6 +31,10 @@ it just adds records to the result set
 -------------------------
 
 /*
+-- types
+create domain vert_t as text;
+create domain dist_t as bigint;
+
 -- graph
 create table relations (
    _from text not null
