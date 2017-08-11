@@ -6,7 +6,8 @@ In his very interesting Benchmark: PostgreSQL, MongoDB, Neo4j, OrientDB and Aran
 Claudius Weinberger excluded PostgreSQL from shortest path test. 
 Reason for this is that originally SQL had no recursion and traversing graphs 
 to unknown depth was impossible. Now many SQL servers support recursive SQL, but it is still very ineffective 
-at least in PostgreSQL. File dijkstra-recursive.sql contains an example of recursive query.  
+at least in PostgreSQL. File dijkstra-recursive.sql contains an example of recursive query, 
+which checks all paths and therefore very likely does not use Dijkstra algorithm.  
 
 This is an attempt to test ability of relational databases to solve graph traversing problems in PL/pgSQL.
 Procedures could be easily adapted to any SQL server with recursive SQL support. 
@@ -30,12 +31,12 @@ COPY relations FROM 'path-to-data/relations.txt' (format csv, delimiter E'\t');
 
 Files:
 
-db.sql                  - database structure, types, etc
+db.sql                  -- database structure, types, etc
 
-dijkstra-recursive.sql  - SQL implementation, it is not not Dijkstra algorithm
+dijkstra-recursive.sql  -- single query implementation
 
-dijkstra.sql            - PL/pgSQL implentation of Dijkstra Shortest Path algorithm
+dijkstra.sql            -- PL/pgSQL implentation of Dijkstra Shortest Path algorithm
 
-test.sql                - test script
+test.sql                -- test script
 
 
