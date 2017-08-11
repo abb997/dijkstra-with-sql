@@ -11,7 +11,7 @@ create table relations (
   );
 
 -- load data, could take several minutes  
-COPY relations FROM 'path-to-data/pokec-rel.txt' (format csv, delimiter E'\t');
+COPY relations FROM 'path-to-data/relations.txt' (format csv, delimiter E'\t');
 
 -- very important
 create unique index if not exists relations_i on relations (_to,_from);

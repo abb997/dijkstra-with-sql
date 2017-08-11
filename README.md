@@ -11,8 +11,22 @@ at least in PostgreSQL. File dijkstra-recursive.sql contains an example of recur
 This is an attempt to test ability of relational databases to solve graph traversing problems in PL/pgSQL.
 Procedures could be easily adapted to any SQL server with recursive SQL support. 
 
-Original test code could be found here https://github.com/weinberger/nosql-tests
-and test data here https://s3.amazonaws.com/nosql-sample-data/postgresql-9.4.4.tar.bz2
+Original test code could be found here: https://github.com/weinberger/nosql-tests
+and test data here: https://s3.amazonaws.com/nosql-sample-data/postgresql-9.4.4.tar.bz2
+
+Relationship data that we need is in the postgresql-9.4.4/import/soc-pokec-relationships-postgres.txt
+
+run
+
+sed /_from/d soc-pokec-relationships-postgres.txt > relations.txt
+
+
+and use relations.txt
+in the data import command in db.sql:
+
+COPY relations FROM 'path-to-data/relations.txt' (format csv, delimiter E'\t');
+
+
 
 Files:
 
