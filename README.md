@@ -11,12 +11,17 @@ at least in PostgreSQL. File dijkstra-recursive.sql contains an example of recur
 This is an attempt to test ability of relational databases to solve graph traversing problems in PL/pgSQL.
 Procedures could be easily adapted to any SQL server with recursive SQL support. 
 
-Test data could be found here https://github.com/weinberger/nosql-tests
+Original test code could be found here https://github.com/weinberger/nosql-tests
+and test data here https://s3.amazonaws.com/nosql-sample-data/postgresql-9.4.4.tar.bz2
 
 Files:
+
 db.sql                  - database structure, types, etc
+
 dijkstra-recursive.sql  - SQL implementation, it is not not Dijkstra algorithm
+
 dijkstra.sql            - PL/pgSQL implentation of Dijkstra Shortest Path algorithm
+
 test.sql                - test script
 
 
