@@ -1,5 +1,5 @@
 # dijkstra-with-sql
-PL/pgsql implementation of Shortest Path Dijkstra algorithm. Version for same length edge length (social network) for PostgreSQL server. 
+SQL and PL/pgsql implementation of Shortest Path Dijkstra algorithm. Version for same length edge length (social network) for PostgreSQL server. 
 
 In his very interesting Benchmark: PostgreSQL, MongoDB, Neo4j, OrientDB and ArangoDB
 (https://www.arangodb.com/2015/10/benchmark-postgresql-mongodb-arangodb/) 
