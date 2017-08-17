@@ -1,7 +1,7 @@
 # dijkstra-with-sql
 SQL and PL/pgsql implementation of Shortest Path Dijkstra algorithm. Version for same length edge length (social network) for PostgreSQL server. 
 
-In his very interesting Benchmark: PostgreSQL, MongoDB, Neo4j, OrientDB and ArangoDB
+In his very interesting post "Benchmark: PostgreSQL, MongoDB, Neo4j, OrientDB and ArangoDB"
 (https://www.arangodb.com/2015/10/benchmark-postgresql-mongodb-arangodb/) 
 Claudius Weinberger excluded PostgreSQL from shortest path test. 
 Reason for this is that originally SQL had no recursion and traversing graphs 
